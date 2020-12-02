@@ -10,24 +10,30 @@ public class Main {
         System.out.println("Vvedite chisla: ");
         ArrayList <Integer> arrayList = new ArrayList<>(); //регистрация массива для вводимых чисел
         int i = 1;
-        while (i <= number){                                //цикл количества запусков скана вводимых чисел
+        while (i <= number){                                //цикл запусков скана вводимых чисел
             arrayList.add(scan.nextInt());
             i++;
         }
-        String lengthStr =String.valueOf(arrayList.get(0)); //Получаем значение первого элемента массива в String
+        int min = String.valueOf(arrayList.get(0)).length();       //принимает длину первого элемента массива для дальнейшего сравнения
         int line;
-        int min = lengthStr.length();                       //принимает длину первого значение для дальнейшего сравнения
-        int max = 1;
-        for (Integer len:arrayList) {                       //цикл сравнения всех элементов массива с min и max
-            lengthStr = String.valueOf(len);
-            line = lengthStr.length();
-            if (line < min){
-                min = line; }
-            if (line > max) {
-                max = line;
-                }
+        int minNum = arrayList.get(0);                             //принимает значение первого элемента массива
+        int maxNum =0;
+        int max = 0;
+
+        for (int len = 0; len < arrayList.size(); len++) {         //цикл сравнения всех элементов массива с min и max
+            line = String.valueOf(arrayList.get(len)).length();   //принимает длину элементов массива
+
+            if (line <= min){                                   //сравнение минимального значение
+                min = line;
+                minNum = arrayList.get(len);
             }
-        System.out.println("Minimum = " + min);
-        System.out.println("Maximum = " + max);
+
+            if (line >= max) {                                  //сравнение максимального значения
+                max = line;
+                maxNum = arrayList.get(len);
+            }
+            }
+        System.out.println("Minimum = " + min + "   " + minNum);
+        System.out.println("Maximum = " + max + "   " + maxNum);
     }
 }
